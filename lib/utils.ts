@@ -39,22 +39,22 @@ export const formatDateTime = (dateString: Date) => {
   };
 
   const formattedDateTime: string = new Date(dateString).toLocaleString(
-    "en-US",
+    "nl-NL",
     dateTimeOptions
   );
 
   const formattedDateDay: string = new Date(dateString).toLocaleString(
-    "en-US",
+    "nl-NL",
     dateDayOptions
   );
 
   const formattedDate: string = new Date(dateString).toLocaleString(
-    "en-US",
+    "nl-NL",
     dateOptions
   );
 
   const formattedTime: string = new Date(dateString).toLocaleString(
-    "en-US",
+    "nl-NL",
     timeOptions
   );
 
@@ -195,16 +195,32 @@ export const getTransactionStatus = (date: Date) => {
   return date > twoDaysAgo ? "Processing" : "Success";
 };
 
+// export const authFormSchema = (type: string) => z.object({
+//   // registreren
+//   firstName: type === 'inloggen' ? z.string({ required_error: "Vereist", }).optional() : z.string({ required_error: "Vereist", }).min(2, { message: "Voornaam moet minimaal 2 tekens bevatten" }),
+//   lastName: type === 'inloggen' ? z.string({ required_error: "Vereist", }).optional() : z.string({ required_error: "Vereist", }).min(2, { message: "Achternaam moet minimaal 2 tekens bevatten" }),
+//   address1: type === 'inloggen' ? z.string({ required_error: "Vereist", }).optional() : z.string({ required_error: "Vereist", }).regex(/^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z\d\s]+$/, { message: "Adres moet zowel een straatnaam en huisnummer bevatten", }).max(50, { message: "Adres mag maximaal 50 tekens bevatten" }),
+//   state: type === 'inloggen' ? z.string({ required_error: "Vereist", }).optional() : z.string({ required_error: "Vereist", }).regex(/^[a-zA-Z\s]+$/, { message: "Plaats mag alleen letters bevatten, geen cijfers of symbolen", }).min(2, { message: "Plaats moet minimaal 2 tekens bevatten" }),
+//   city: type === 'inloggen' ? z.string({ required_error: "Vereist", }).optional() : z.string({ required_error: "Vereist", }).regex(/^[a-zA-Z\s]+$/, { message: "Plaats mag alleen letters bevatten, geen cijfers of symbolen", }).min(2, { message: "Plaats moet minimaal 2 tekens bevatten" }),
+//   postalCode: type === 'inloggen' ? z.string({ required_error: "Vereist", }).optional() : z.string({ required_error: "Vereist", }).regex(/^\d{4}[A-Za-z]{2}$/, { message: "Postcode moet bestaan uit 4 cijfers en 2 letters (bijvoorbeeld 1234AB)", }).min(6, { message: 'Postcode moet minimaal 6 tekens lang zijn' }).max(6),
+//   dateOfBirth: type === 'inloggen' ? z.string({ required_error: "Vereist", }).optional() : z.string({ required_error: "Vereist", }).regex(/^\d{2}-\d{2}-\d{4}$/, { message: "Geboortedatum moet het formaat DD-MM-JJJJ hebben (bijvoorbeeld 01-01-2000)", }).min(10, { message: "Geboortedatum moet minimaal 2 tekens bevatten" }).max(10),
+//   bsn: type === 'inloggen' ? z.string({ required_error: "Vereist", }).optional() : z.string({ required_error: "Vereist", }).regex(/^\d{9}$/, { message: "BSN moet precies 9 cijfers bevatten", }).min(9, { message: "BSN moet minimaal 2 tekens bevatten" }).max(9),
+//   // beide
+//   email: z.string({ required_error: "Vereist", }).email({ message: "Vul een geldig mailadres in" }),
+//   password: z.string({ required_error: "Vereist", }).min(8, { message: "Wachtwoord moet minimaal 8 tekens bevatten" }),
+// })
+
 export const authFormSchema = (type: string) => z.object({
-  // registreren
-  firstName: type === 'inloggen' ? z.string({ required_error: "Vereist", }).optional() : z.string({ required_error: "Vereist", }).min(2, { message: "Voornaam moet minimaal 2 tekens bevatten" }),
-  lastName: type === 'inloggen' ? z.string({ required_error: "Vereist", }).optional() : z.string({ required_error: "Vereist", }).min(2, { message: "Achternaam moet minimaal 2 tekens bevatten" }),
-  address1: type === 'inloggen' ? z.string({ required_error: "Vereist", }).optional() : z.string({ required_error: "Vereist", }).regex(/^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z\d\s]+$/, { message: "Adres moet zowel een straatnaam en huisnummer bevatten", }).max(50, { message: "Adres mag maximaal 50 tekens bevatten" }),
-  city: type === 'inloggen' ? z.string({ required_error: "Vereist", }).optional() : z.string({ required_error: "Vereist", }).regex(/^[a-zA-Z\s]+$/, { message: "Plaats mag alleen letters bevatten, geen cijfers of symbolen", }).min(2, { message: "Plaats moet minimaal 2 tekens bevatten" }),
-  postalCode: type === 'inloggen' ? z.string({ required_error: "Vereist", }).optional() : z.string({ required_error: "Vereist", }).regex(/^\d{4}[A-Za-z]{2}$/, { message: "Postcode moet bestaan uit 4 cijfers en 2 letters (bijvoorbeeld 1234AB)", }).min(6, { message: 'Postcode moet minimaal 6 tekens lang zijn' }).max(6),
-  dateOfBirth: type === 'inloggen' ? z.string({ required_error: "Vereist", }).optional() : z.string({ required_error: "Vereist", }).regex(/^\d{2}-\d{2}-\d{4}$/, { message: "Geboortedatum moet het formaat DD-MM-JJJJ hebben (bijvoorbeeld 01-01-2000)", }).min(10, { message: "Geboortedatum moet minimaal 2 tekens bevatten" }).max(10),
-  bsn: type === 'inloggen' ? z.string({ required_error: "Vereist", }).optional() : z.string({ required_error: "Vereist", }).regex(/^\d{9}$/, { message: "BSN moet precies 9 cijfers bevatten", }).min(9, { message: "BSN moet minimaal 2 tekens bevatten" }).max(9),
-  // beide
-  email: z.string({ required_error: "Vereist", }).email({ message: "Vul een geldig mailadres in" }),
-  password: z.string({ required_error: "Vereist", }).min(8, { message: "Wachtwoord moet minimaal 8 tekens bevatten" }),
+  // sign up
+  firstName: type === 'inloggen' ? z.string().optional() : z.string().min(3),
+  lastName: type === 'inloggen' ? z.string().optional() : z.string().min(3),
+  address1: type === 'inloggen' ? z.string().optional() : z.string().max(50),
+  city: type === 'inloggen' ? z.string().optional() : z.string().max(50),
+  state: type === 'inloggen' ? z.string().optional() : z.string().min(2).max(2),
+  postalCode: type === 'inloggen' ? z.string().optional() : z.string().min(3).max(6),
+  dateOfBirth: type === 'inloggenn' ? z.string().optional() : z.string().min(3),
+  ssn: type === 'inloggen' ? z.string().optional() : z.string().min(3),
+  // both
+  email: z.string().email(),
+  password: z.string().min(8),
 })
